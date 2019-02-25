@@ -109,14 +109,21 @@ change_instance (){
   instance_id="${instances_array[var]}"
   instance_type="${instances_array[var+1]}"
 
-  if [ check_desire_state == 1 ]; then
+  if [ check_desire_state == 0 ]; then
+      continue;
+  else 
       stop_instance
       create_snapshots
       change_instance_type
       start_instance
+  #if [ check_desire_state == 1 ]; then
+   #   stop_instance
+    #  create_snapshots
+    #  change_instance_type
+    #  start_instance
   
-  else 
-      continue;
+  #else 
+   #   continue;
   done
 }
 change_instance
